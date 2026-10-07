@@ -1,0 +1,44 @@
+Ez-Touch Project Directory Structure
+Generated on: Wed 07 Oct 2026 02:13:10 PM UTC
+====================================
+
+.
+├── app
+│   ├── build.gradle
+│   └── src
+│       └── main
+│           ├── AndroidManifest.xml
+│           ├── java
+│           │   └── com
+│           │       └── assistivetouch
+│           │           └── custom
+│           │               ├── FloatingService.kt
+│           │               └── MainActivity.kt
+│           └── res
+│               ├── drawable
+│               │   ├── bg_floating_menu.xml
+│               │   └── ic_launcher_background.xml
+│               ├── layout
+│               │   ├── activity_main.xml
+│               │   ├── layout_floating_menu_main.xml
+│               │   └── layout_floating_menu_settings.xml
+│               ├── mipmap-anydpi-v26
+│               │   ├── ic_launcher_round.xml
+│               │   └── ic_launcher.xml
+│               └── values
+│                   └── styles.xml
+├── build.gradle
+├── creation.log
+├── generate_structure.sh
+├── gradle
+│   └── wrapper
+│       ├── gradle-wrapper.jar
+│       └── gradle-wrapper.properties
+├── gradle.properties
+├── gradlew
+├── gradlew.bat
+├── LICENSE
+├── settings.gradle
+└── structure.txt
+
+14 directories, 23 files

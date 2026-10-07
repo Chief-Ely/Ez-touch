@@ -1,0 +1,37 @@
+R_DEF: Internal format may change without notice
+local
+drawable bg_floating_menu
+drawable ic_launcher_background
+id btnAutoRotate
+id btnBackToMain
+id btnBluetooth
+id btnFlashlight
+id btnLocation
+id btnMenuHome
+id btnMenuLock
+id btnMenuMain
+id btnMenuScreenshot
+id btnMenuSetting
+id btnNormal
+id btnPickImage
+id btnStartService
+id btnStopService
+id btnVolumeDown
+id btnVolumeUp
+id btnWifi
+id imgPreview
+id menuMainRoot
+id menuSettingsRoot
+id txtRingerLabel
+id txtRotationLabel
+layout activity_main
+layout layout_floating_menu_main
+layout layout_floating_menu_settings
+mipmap ic_launcher
+mipmap ic_launcher_round
+string accessibility_description
+string app_name
+style FloatingMenuIcon
+style FloatingMenuItem
+style FloatingMenuText
+xml accessibility_service_config

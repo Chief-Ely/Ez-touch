@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/menuMainRoot"
+    android:layout_width="260dp"
+    android:layout_height="260dp"
+    android:background="@drawable/bg_floating_menu"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:weightSum="3">
+
+    <!-- Top Row: Setting, Lock, Screenshot -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/btnMenuSetting"
+            style="@style/FloatingMenuItem">
+            <ImageView style="@style/FloatingMenuIcon" android:src="@android:drawable/ic_menu_preferences" />
+            <TextView style="@style/FloatingMenuText" android:text="Settings" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/btnMenuLock"
+            style="@style/FloatingMenuItem">
+            <ImageView style="@style/FloatingMenuIcon" android:src="@android:drawable/ic_lock_lock" />
+            <TextView style="@style/FloatingMenuText" android:text="Lock" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/btnMenuScreenshot"
+            style="@style/FloatingMenuItem">
+            <ImageView style="@style/FloatingMenuIcon" android:src="@android:drawable/ic_menu_camera" />
+            <TextView style="@style/FloatingMenuText" android:text="Screenshot" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Middle Row: Center Main App Quick Launcher -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <LinearLayout
+            android:id="@+id/btnMenuMain"
+            style="@style/FloatingMenuItem">
+            <ImageView style="@style/FloatingMenuIcon" android:src="@android:drawable/ic_menu_edit" />
+            <TextView style="@style/FloatingMenuText" android:text="Main" />
+        </LinearLayout>
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <!-- Bottom Row: Center Home Action -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <LinearLayout
+            android:id="@+id/btnMenuHome"
+            style="@style/FloatingMenuItem">
+            <ImageView style="@style/FloatingMenuIcon" android:src="@android:drawable/ic_menu_view" />
+            <TextView style="@style/FloatingMenuText" android:text="Home" />
+        </LinearLayout>
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+</LinearLayout>

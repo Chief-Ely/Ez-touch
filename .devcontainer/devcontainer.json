@@ -1,0 +1,13 @@
+{
+  "name": "Android Kotlin Environment",
+  "image": "mcr.microsoft.com/devcontainers/java:1-17-bullseye",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "fwcd.kotlin",
+        "vscjava.vscode-java-pack"
+      ]
+    }
+  },
+  "postCreateCommand": "bash .devcontainer/setup-android.sh"
+}

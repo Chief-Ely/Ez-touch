@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/menuSettingsRoot"
+    android:layout_width="260dp"
+    android:layout_height="260dp"
+    android:background="@drawable/bg_floating_menu"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:weightSum="3">
+
+    <!-- Top Row: Wi-Fi, Bluetooth, Auto Rotate -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/btnWifi"
+            style="@style/FloatingMenuItem">
+            <ImageView style="@style/FloatingMenuIcon" android:src="@android:drawable/ic_menu_compass" />
+            <TextView style="@style/FloatingMenuText" android:text="Wi-Fi" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/btnBluetooth"
+            style="@style/FloatingMenuItem">
+            <ImageView style="@style/FloatingMenuIcon" android:src="@android:drawable/ic_menu_share" />
+            <TextView style="@style/FloatingMenuText" android:text="Bluetooth" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/btnAutoRotate"
+            style="@style/FloatingMenuItem">
+            <ImageView style="@style/FloatingMenuIcon" android:src="@android:drawable/ic_menu_always_landscape_portrait" />
+            <TextView id="@+id/txtRotationLabel" style="@style/FloatingMenuText" android:text="Rotate" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Middle Row: Location, Back to Main Menu, Volume Up -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/btnLocation"
+            style="@style/FloatingMenuItem">
+            <ImageView style="@style/FloatingMenuIcon" android:src="@android:drawable/ic_menu_mylocation" />
+            <TextView style="@style/FloatingMenuText" android:text="Location" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/btnBackToMain"
+            style="@style/FloatingMenuItem">
+            <ImageView style="@style/FloatingMenuIcon" android:src="@android:drawable/ic_menu_revert" />
+            <TextView style="@style/FloatingMenuText" android:text="Back" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/btnVolumeUp"
+            style="@style/FloatingMenuItem">
+            <ImageView style="@style/FloatingMenuIcon" android:src="@android:drawable/ic_lock_silent_mode_off" />
+            <TextView style="@style/FloatingMenuText" android:text="Vol +" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Bottom Row: Silent/Ringer Toggle, Flashlight, Volume Down -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/btnNormal"
+            style="@style/FloatingMenuItem">
+            <ImageView style="@style/FloatingMenuIcon" android:src="@android:drawable/ic_lock_silent_mode" />
+            <TextView id="@+id/txtRingerLabel" style="@style/FloatingMenuText" android:text="Ringer" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/btnFlashlight"
+            style="@style/FloatingMenuItem">
+            <ImageView style="@style/FloatingMenuIcon" android:src="@android:drawable/ic_menu_day" />
+            <TextView style="@style/FloatingMenuText" android:text="Torch" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/btnVolumeDown"
+            style="@style/FloatingMenuItem">
+            <ImageView style="@style/FloatingMenuIcon" android:src="@android:drawable/ic_lock_silent_mode" />
+            <TextView style="@style/FloatingMenuText" android:text="Vol -" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
