@@ -1,5 +1,6 @@
 package com.assistivetouch.custom
 
+import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -42,44 +43,54 @@ class MainActivity : AppCompatActivity() {
         val btnStopService: Button = findViewById(R.id.btnStopService)
 
         loadSavedPreview()
+        checkAndRequestAllPermissions()
 
         btnPickImage.setOnClickListener {
             pickMedia.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
         }
 
         btnStartService.setOnClickListener {
-            checkPermissionsAndStart()
+            if (checkAndRequestAllPermissions()) {
+                startService(Intent(this, FloatingService::class.java))
+                Toast.makeText(this, "Ez-touch active", Toast.LENGTH_SHORT).show()
+            }
         }
 
         btnStopService.setOnClickListener {
             stopService(Intent(this, FloatingService::class.java))
-            Toast.makeText(this, "Assistive Touch overlay disabled", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Ez-touch overlay disabled", Toast.LENGTH_SHORT).show()
         }
     }
 
-    private fun checkPermissionsAndStart() {
+    private fun checkAndRequestAllPermissions(): Boolean {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !Settings.canDrawOverlays(this)) {
             startActivity(Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, Uri.parse("package:$packageName")))
-            Toast.makeText(this, "Please grant Overlay permission", Toast.LENGTH_LONG).show()
-            return
+            Toast.makeText(this, "Grant Display Over Other Apps permission", Toast.LENGTH_SHORT).show()
+            return false
         }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !Settings.System.canWrite(this)) {
-            val intent = Intent(Settings.ACTION_MANAGE_WRITE_SETTINGS, Uri.parse("package:$packageName"))
-            startActivity(intent)
-            Toast.makeText(this, "Please grant Write Settings permission for Auto-Rotate control", Toast.LENGTH_LONG).show()
-            return
+            startActivity(Intent(Settings.ACTION_MANAGE_WRITE_SETTINGS, Uri.parse("package:$packageName")))
+            Toast.makeText(this, "Grant Write System Settings permission", Toast.LENGTH_SHORT).show()
+            return false
         }
 
         if (AssistiveAccessibilityService.instance == null) {
-            val intent = Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS)
-            startActivity(intent)
-            Toast.makeText(this, "Please enable Ez-Touch Accessibility Service for Screenshot and Lock actions", Toast.LENGTH_LONG).show()
-            return
+            openAccessibilitySettings(this)
+            Toast.makeText(this, "Enable Ez-touch in Accessibility Settings", Toast.LENGTH_SHORT).show()
+            return false
         }
 
-        startService(Intent(this, FloatingService::class.java))
-        Toast.makeText(this, "Assistive Touch active", Toast.LENGTH_SHORT).show()
+        return true
+    }
+
+    companion object {
+        fun openAccessibilitySettings(context: Context) {
+            val intent = Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS).apply {
+                flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            }
+            context.startActivity(intent)
+        }
     }
 
     private fun processAndSaveImage(uri: Uri) {
@@ -101,19 +112,24 @@ class MainActivity : AppCompatActivity() {
             streamForDecode?.close()
 
             if (scaledBitmap != null) {
-                val finalBitmap = Bitmap.createScaledBitmap(scaledBitmap, targetSize, targetSize, true)
-                val circularBitmap = getCircularBitmap(finalBitmap)
+                val finalSquareBitmap = Bitmap.createScaledBitmap(scaledBitmap, targetSize, targetSize, true)
+                val circularBitmap = getCircularBitmap(finalSquareBitmap)
 
-                val file = File(filesDir, "custom_ball.png")
-                FileOutputStream(file).use { out ->
+                // Save circular version for the floating overlay ball
+                val circularFile = File(filesDir, "custom_ball.png")
+                FileOutputStream(circularFile).use { out ->
                     circularBitmap.compress(Bitmap.CompressFormat.PNG, 100, out)
                 }
 
-                imgPreview.setImageBitmap(circularBitmap)
-                Toast.makeText(this, "Floating photo saved!", Toast.LENGTH_SHORT).show()
+                // Save square version for the main app UI preview
+                val squareFile = File(filesDir, "preview_square.png")
+                FileOutputStream(squareFile).use { out ->
+                    finalSquareBitmap.compress(Bitmap.CompressFormat.PNG, 100, out)
+                }
 
-                stopService(Intent(this, FloatingService::class.java))
-                startService(Intent(this, FloatingService::class.java))
+                // Display original square image in main activity UI without starting service
+                imgPreview.setImageBitmap(finalSquareBitmap)
+                Toast.makeText(this, "Floating photo saved!", Toast.LENGTH_SHORT).show()
             }
         } catch (e: Exception) {
             e.printStackTrace()
@@ -139,7 +155,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun loadSavedPreview() {
-        val file = File(filesDir, "custom_ball.png")
+        val file = File(filesDir, "preview_square.png")
         if (file.exists()) {
             val bitmap = BitmapFactory.decodeFile(file.absolutePath)
             imgPreview.setImageBitmap(bitmap)

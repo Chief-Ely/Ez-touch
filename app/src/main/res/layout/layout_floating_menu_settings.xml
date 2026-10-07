@@ -18,21 +18,21 @@
         <LinearLayout
             android:id="@+id/btnWifi"
             style="@style/FloatingMenuItem">
-            <ImageView style="@style/FloatingMenuIcon" android:src="@android:drawable/ic_menu_compass" />
+            <ImageView id="@+id/imgWifiIcon" style="@style/FloatingMenuIcon" android:src="@android:drawable/ic_menu_compass" />
             <TextView style="@style/FloatingMenuText" android:text="Wi-Fi" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/btnBluetooth"
             style="@style/FloatingMenuItem">
-            <ImageView style="@style/FloatingMenuIcon" android:src="@android:drawable/ic_menu_share" />
+            <ImageView id="@+id/imgBluetoothIcon" style="@style/FloatingMenuIcon" android:src="@android:drawable/ic_menu_share" />
             <TextView style="@style/FloatingMenuText" android:text="Bluetooth" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/btnAutoRotate"
             style="@style/FloatingMenuItem">
-            <ImageView style="@style/FloatingMenuIcon" android:src="@android:drawable/ic_menu_always_landscape_portrait" />
+            <ImageView id="@+id/imgRotateIcon" style="@style/FloatingMenuIcon" android:src="@android:drawable/ic_menu_always_landscape_portrait" />
             <TextView id="@+id/txtRotationLabel" style="@style/FloatingMenuText" android:text="Rotate" />
         </LinearLayout>
     </LinearLayout>
@@ -47,7 +47,7 @@
         <LinearLayout
             android:id="@+id/btnLocation"
             style="@style/FloatingMenuItem">
-            <ImageView style="@style/FloatingMenuIcon" android:src="@android:drawable/ic_menu_mylocation" />
+            <ImageView id="@+id/imgLocationIcon" style="@style/FloatingMenuIcon" android:src="@android:drawable/ic_menu_mylocation" />
             <TextView style="@style/FloatingMenuText" android:text="Location" />
         </LinearLayout>
 
@@ -83,7 +83,7 @@
         <LinearLayout
             android:id="@+id/btnFlashlight"
             style="@style/FloatingMenuItem">
-            <ImageView style="@style/FloatingMenuIcon" android:src="@android:drawable/ic_menu_day" />
+            <ImageView id="@+id/imgTorchIcon" style="@style/FloatingMenuIcon" android:src="@android:drawable/ic_menu_day" />
             <TextView style="@style/FloatingMenuText" android:text="Torch" />
         </LinearLayout>
 

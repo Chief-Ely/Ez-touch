@@ -1,4 +1,4 @@
 <resources>
-    <string name="app_name">Custom Assistive Touch</string>
-    <string name="accessibility_description">Required for Ez-Touch to trigger system screen locking and native screenshots directly.</string>
+    <string name="app_name">Ez-touch</string>
+    <string name="accessibility_description">Required for Ez-touch to trigger system screen locking and native screenshots directly.</string>
 </resources>

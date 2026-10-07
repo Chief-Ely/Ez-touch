@@ -2895,6 +2895,7 @@ drawable design_ic_visibility
 drawable design_ic_visibility_off
 drawable design_password_eye
 drawable design_snackbar_background
+drawable ic_app_logo
 drawable ic_arrow_back_black_24
 drawable ic_call_answer
 drawable ic_call_answer_low
@@ -3200,7 +3201,12 @@ id ifRoom
 id ignore
 id ignoreRequest
 id image
+id imgBluetoothIcon
+id imgLocationIcon
 id imgPreview
+id imgRotateIcon
+id imgTorchIcon
+id imgWifiIcon
 id indeterminate
 id info
 id invisible

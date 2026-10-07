@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /workspaces/Ez-touch/app/src/main/AndroidManifest.xml:2:1-47:12
-INJECTED from /workspaces/Ez-touch/app/src/main/AndroidManifest.xml:2:1-47:12
-INJECTED from /workspaces/Ez-touch/app/src/main/AndroidManifest.xml:2:1-47:12
-INJECTED from /workspaces/Ez-touch/app/src/main/AndroidManifest.xml:2:1-47:12
+ADDED from /workspaces/Ez-touch/app/src/main/AndroidManifest.xml:2:1-48:12
+INJECTED from /workspaces/Ez-touch/app/src/main/AndroidManifest.xml:2:1-48:12
+INJECTED from /workspaces/Ez-touch/app/src/main/AndroidManifest.xml:2:1-48:12
+INJECTED from /workspaces/Ez-touch/app/src/main/AndroidManifest.xml:2:1-48:12
 MERGED from [com.google.android.material:material:1.11.0] /home/vscode/.gradle/caches/transforms-3/0a05ecc953aabaadb22ad6ce282aeab1/transformed/material-1.11.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.appcompat:appcompat-resources:1.6.1] /home/vscode/.gradle/caches/transforms-3/658de84dce83f5800f662da261bfca5a/transformed/jetified-appcompat-resources-1.6.1/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.constraintlayout:constraintlayout:2.0.1] /home/vscode/.gradle/caches/transforms-3/1d779a7f5d9d2c61b45672a1511f8995/transformed/constraintlayout-2.0.1/AndroidManifest.xml:2:1-11:12
@@ -73,9 +73,17 @@ uses-permission#android.permission.ACCESS_NOTIFICATION_POLICY
 ADDED from /workspaces/Ez-touch/app/src/main/AndroidManifest.xml:8:5-85
 	android:name
 		ADDED from /workspaces/Ez-touch/app/src/main/AndroidManifest.xml:8:22-82
+uses-permission#android.permission.ACCESS_WIFI_STATE
+ADDED from /workspaces/Ez-touch/app/src/main/AndroidManifest.xml:9:5-76
+	android:name
+		ADDED from /workspaces/Ez-touch/app/src/main/AndroidManifest.xml:9:22-73
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from /workspaces/Ez-touch/app/src/main/AndroidManifest.xml:10:5-79
+	android:name
+		ADDED from /workspaces/Ez-touch/app/src/main/AndroidManifest.xml:10:22-76
 application
-ADDED from /workspaces/Ez-touch/app/src/main/AndroidManifest.xml:10:5-46:19
-INJECTED from /workspaces/Ez-touch/app/src/main/AndroidManifest.xml:10:5-46:19
+ADDED from /workspaces/Ez-touch/app/src/main/AndroidManifest.xml:12:5-47:19
+INJECTED from /workspaces/Ez-touch/app/src/main/AndroidManifest.xml:12:5-47:19
 MERGED from [com.google.android.material:material:1.11.0] /home/vscode/.gradle/caches/transforms-3/0a05ecc953aabaadb22ad6ce282aeab1/transformed/material-1.11.0/AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.11.0] /home/vscode/.gradle/caches/transforms-3/0a05ecc953aabaadb22ad6ce282aeab1/transformed/material-1.11.0/AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.0.1] /home/vscode/.gradle/caches/transforms-3/1d779a7f5d9d2c61b45672a1511f8995/transformed/constraintlayout-2.0.1/AndroidManifest.xml:9:5-20
@@ -97,63 +105,63 @@ MERGED from [androidx.startup:startup-runtime:1.1.1] /home/vscode/.gradle/caches
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.12.0] /home/vscode/.gradle/caches/transforms-3/9209685f1972143d9ab1eeffcca4ab41/transformed/core-1.12.0/AndroidManifest.xml:28:18-86
 	android:supportsRtl
-		ADDED from /workspaces/Ez-touch/app/src/main/AndroidManifest.xml:15:9-35
+		ADDED from /workspaces/Ez-touch/app/src/main/AndroidManifest.xml:17:9-35
 	android:label
-		ADDED from /workspaces/Ez-touch/app/src/main/AndroidManifest.xml:13:9-47
+		ADDED from /workspaces/Ez-touch/app/src/main/AndroidManifest.xml:16:9-41
 	android:roundIcon
-		ADDED from /workspaces/Ez-touch/app/src/main/AndroidManifest.xml:14:9-54
+		ADDED from /workspaces/Ez-touch/app/src/main/AndroidManifest.xml:15:9-50
 	android:icon
-		ADDED from /workspaces/Ez-touch/app/src/main/AndroidManifest.xml:12:9-43
+		ADDED from /workspaces/Ez-touch/app/src/main/AndroidManifest.xml:14:9-45
 	android:allowBackup
-		ADDED from /workspaces/Ez-touch/app/src/main/AndroidManifest.xml:11:9-35
+		ADDED from /workspaces/Ez-touch/app/src/main/AndroidManifest.xml:13:9-35
 	android:theme
-		ADDED from /workspaces/Ez-touch/app/src/main/AndroidManifest.xml:16:9-65
+		ADDED from /workspaces/Ez-touch/app/src/main/AndroidManifest.xml:18:9-65
 activity#com.assistivetouch.custom.MainActivity
-ADDED from /workspaces/Ez-touch/app/src/main/AndroidManifest.xml:18:9-25:20
+ADDED from /workspaces/Ez-touch/app/src/main/AndroidManifest.xml:20:9-27:20
 	android:exported
-		ADDED from /workspaces/Ez-touch/app/src/main/AndroidManifest.xml:20:13-36
+		ADDED from /workspaces/Ez-touch/app/src/main/AndroidManifest.xml:22:13-36
 	android:name
-		ADDED from /workspaces/Ez-touch/app/src/main/AndroidManifest.xml:19:13-41
+		ADDED from /workspaces/Ez-touch/app/src/main/AndroidManifest.xml:21:13-41
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from /workspaces/Ez-touch/app/src/main/AndroidManifest.xml:21:13-24:29
+ADDED from /workspaces/Ez-touch/app/src/main/AndroidManifest.xml:23:13-26:29
 action#android.intent.action.MAIN
-ADDED from /workspaces/Ez-touch/app/src/main/AndroidManifest.xml:22:17-69
+ADDED from /workspaces/Ez-touch/app/src/main/AndroidManifest.xml:24:17-69
 	android:name
-		ADDED from /workspaces/Ez-touch/app/src/main/AndroidManifest.xml:22:25-66
+		ADDED from /workspaces/Ez-touch/app/src/main/AndroidManifest.xml:24:25-66
 category#android.intent.category.LAUNCHER
-ADDED from /workspaces/Ez-touch/app/src/main/AndroidManifest.xml:23:17-77
+ADDED from /workspaces/Ez-touch/app/src/main/AndroidManifest.xml:25:17-77
 	android:name
-		ADDED from /workspaces/Ez-touch/app/src/main/AndroidManifest.xml:23:27-74
+		ADDED from /workspaces/Ez-touch/app/src/main/AndroidManifest.xml:25:27-74
 service#com.assistivetouch.custom.FloatingService
-ADDED from /workspaces/Ez-touch/app/src/main/AndroidManifest.xml:27:9-31:58
+ADDED from /workspaces/Ez-touch/app/src/main/AndroidManifest.xml:29:9-33:58
 	android:enabled
-		ADDED from /workspaces/Ez-touch/app/src/main/AndroidManifest.xml:29:13-35
+		ADDED from /workspaces/Ez-touch/app/src/main/AndroidManifest.xml:31:13-35
 	android:exported
-		ADDED from /workspaces/Ez-touch/app/src/main/AndroidManifest.xml:30:13-37
+		ADDED from /workspaces/Ez-touch/app/src/main/AndroidManifest.xml:32:13-37
 	android:foregroundServiceType
-		ADDED from /workspaces/Ez-touch/app/src/main/AndroidManifest.xml:31:13-55
+		ADDED from /workspaces/Ez-touch/app/src/main/AndroidManifest.xml:33:13-55
 	android:name
-		ADDED from /workspaces/Ez-touch/app/src/main/AndroidManifest.xml:28:13-44
+		ADDED from /workspaces/Ez-touch/app/src/main/AndroidManifest.xml:30:13-44
 service#com.assistivetouch.custom.AssistiveAccessibilityService
-ADDED from /workspaces/Ez-touch/app/src/main/AndroidManifest.xml:34:9-44:19
+ADDED from /workspaces/Ez-touch/app/src/main/AndroidManifest.xml:35:9-45:19
 	android:exported
-		ADDED from /workspaces/Ez-touch/app/src/main/AndroidManifest.xml:37:13-36
+		ADDED from /workspaces/Ez-touch/app/src/main/AndroidManifest.xml:38:13-36
 	android:permission
-		ADDED from /workspaces/Ez-touch/app/src/main/AndroidManifest.xml:36:13-79
+		ADDED from /workspaces/Ez-touch/app/src/main/AndroidManifest.xml:37:13-79
 	android:name
-		ADDED from /workspaces/Ez-touch/app/src/main/AndroidManifest.xml:35:13-58
+		ADDED from /workspaces/Ez-touch/app/src/main/AndroidManifest.xml:36:13-58
 intent-filter#action:name:android.accessibilityservice.AccessibilityService
-ADDED from /workspaces/Ez-touch/app/src/main/AndroidManifest.xml:38:13-40:29
+ADDED from /workspaces/Ez-touch/app/src/main/AndroidManifest.xml:39:13-41:29
 action#android.accessibilityservice.AccessibilityService
-ADDED from /workspaces/Ez-touch/app/src/main/AndroidManifest.xml:39:17-92
+ADDED from /workspaces/Ez-touch/app/src/main/AndroidManifest.xml:40:17-92
 	android:name
-		ADDED from /workspaces/Ez-touch/app/src/main/AndroidManifest.xml:39:25-89
+		ADDED from /workspaces/Ez-touch/app/src/main/AndroidManifest.xml:40:25-89
 meta-data#android.accessibilityservice
-ADDED from /workspaces/Ez-touch/app/src/main/AndroidManifest.xml:41:13-43:72
+ADDED from /workspaces/Ez-touch/app/src/main/AndroidManifest.xml:42:13-44:72
 	android:resource
-		ADDED from /workspaces/Ez-touch/app/src/main/AndroidManifest.xml:43:17-69
+		ADDED from /workspaces/Ez-touch/app/src/main/AndroidManifest.xml:44:17-69
 	android:name
-		ADDED from /workspaces/Ez-touch/app/src/main/AndroidManifest.xml:42:17-60
+		ADDED from /workspaces/Ez-touch/app/src/main/AndroidManifest.xml:43:17-60
 uses-sdk
 INJECTED from /workspaces/Ez-touch/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /workspaces/Ez-touch/app/src/main/AndroidManifest.xml

@@ -1,6 +1,7 @@
 R_DEF: Internal format may change without notice
 local
 drawable bg_floating_menu
+drawable ic_app_logo
 drawable ic_launcher_background
 id btnAutoRotate
 id btnBackToMain
@@ -19,7 +20,12 @@ id btnStopService
 id btnVolumeDown
 id btnVolumeUp
 id btnWifi
+id imgBluetoothIcon
+id imgLocationIcon
 id imgPreview
+id imgRotateIcon
+id imgTorchIcon
+id imgWifiIcon
 id menuMainRoot
 id menuSettingsRoot
 id txtRingerLabel
