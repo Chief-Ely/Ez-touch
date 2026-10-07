@@ -1,13 +1,5 @@
 [
     {
-        "merged": "/home/vscode/.gradle/daemon/8.1.1/com.assistivetouch.custom.app-merged_res-31:/drawable_ic_launcher_background.xml.flat",
-        "source": "/home/vscode/.gradle/daemon/8.1.1/com.assistivetouch.custom.app-main-33:/drawable/ic_launcher_background.xml"
-    },
-    {
-        "merged": "/home/vscode/.gradle/daemon/8.1.1/com.assistivetouch.custom.app-merged_res-31:/layout_layout_floating_menu_settings.xml.flat",
-        "source": "/home/vscode/.gradle/daemon/8.1.1/com.assistivetouch.custom.app-main-33:/layout/layout_floating_menu_settings.xml"
-    },
-    {
         "merged": "/home/vscode/.gradle/daemon/8.1.1/com.assistivetouch.custom.app-merged_res-31:/mipmap-anydpi-v26_ic_launcher.xml.flat",
         "source": "/home/vscode/.gradle/daemon/8.1.1/com.assistivetouch.custom.app-main-33:/mipmap-anydpi-v26/ic_launcher.xml"
     },
@@ -16,23 +8,43 @@
         "source": "/home/vscode/.gradle/daemon/8.1.1/com.assistivetouch.custom.app-main-33:/layout/activity_main.xml"
     },
     {
+        "merged": "com.assistivetouch.custom.app-merged_res-31:/drawable_bg_card_dark.xml.flat",
+        "source": "com.assistivetouch.custom.app-main-33:/drawable/bg_card_dark.xml"
+    },
+    {
         "merged": "/home/vscode/.gradle/daemon/8.1.1/com.assistivetouch.custom.app-merged_res-31:/drawable_bg_floating_menu.xml.flat",
         "source": "/home/vscode/.gradle/daemon/8.1.1/com.assistivetouch.custom.app-main-33:/drawable/bg_floating_menu.xml"
+    },
+    {
+        "merged": "/home/vscode/.gradle/daemon/8.1.1/com.assistivetouch.custom.app-merged_res-31:/drawable_ic_app_logo.png.flat",
+        "source": "/home/vscode/.gradle/daemon/8.1.1/com.assistivetouch.custom.app-main-33:/drawable/ic_app_logo.png"
+    },
+    {
+        "merged": "/home/vscode/.gradle/daemon/8.1.1/com.assistivetouch.custom.app-merged_res-31:/drawable_ic_launcher_background.xml.flat",
+        "source": "/home/vscode/.gradle/daemon/8.1.1/com.assistivetouch.custom.app-main-33:/drawable/ic_launcher_background.xml"
+    },
+    {
+        "merged": "/home/vscode/.gradle/daemon/8.1.1/com.assistivetouch.custom.app-merged_res-31:/layout_layout_floating_menu_settings.xml.flat",
+        "source": "/home/vscode/.gradle/daemon/8.1.1/com.assistivetouch.custom.app-main-33:/layout/layout_floating_menu_settings.xml"
     },
     {
         "merged": "/home/vscode/.gradle/daemon/8.1.1/com.assistivetouch.custom.app-merged_res-31:/layout_layout_floating_menu_main.xml.flat",
         "source": "/home/vscode/.gradle/daemon/8.1.1/com.assistivetouch.custom.app-main-33:/layout/layout_floating_menu_main.xml"
     },
     {
-        "merged": "com.assistivetouch.custom.app-merged_res-31:/drawable_ic_app_logo.png.flat",
-        "source": "com.assistivetouch.custom.app-main-33:/drawable/ic_app_logo.png"
-    },
-    {
         "merged": "/home/vscode/.gradle/daemon/8.1.1/com.assistivetouch.custom.app-merged_res-31:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
         "source": "/home/vscode/.gradle/daemon/8.1.1/com.assistivetouch.custom.app-main-33:/mipmap-anydpi-v26/ic_launcher_round.xml"
     },
     {
+        "merged": "com.assistivetouch.custom.app-merged_res-31:/drawable_bg_edit_badge.xml.flat",
+        "source": "com.assistivetouch.custom.app-main-33:/drawable/bg_edit_badge.xml"
+    },
+    {
         "merged": "/home/vscode/.gradle/daemon/8.1.1/com.assistivetouch.custom.app-merged_res-31:/xml_accessibility_service_config.xml.flat",
         "source": "/home/vscode/.gradle/daemon/8.1.1/com.assistivetouch.custom.app-main-33:/xml/accessibility_service_config.xml"
+    },
+    {
+        "merged": "com.assistivetouch.custom.app-merged_res-31:/layout_activity_main.xml.flat",
+        "source": "com.assistivetouch.custom.app-main-33:/layout/activity_main.xml"
     }
 ]

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/menuSettingsRoot"
-    android:layout_width="260dp"
-    android:layout_height="260dp"
+    android:layout_width="300dp"
+    android:layout_height="300dp"
     android:background="@drawable/bg_floating_menu"
     android:orientation="vertical"
-    android:padding="16dp"
+    android:padding="20dp"
     android:weightSum="3">
 
     <!-- Top Row: Wi-Fi, Bluetooth, Auto Rotate -->
@@ -17,23 +17,26 @@
 
         <LinearLayout
             android:id="@+id/btnWifi"
-            style="@style/FloatingMenuItem">
-            <ImageView id="@+id/imgWifiIcon" style="@style/FloatingMenuIcon" android:src="@android:drawable/ic_menu_compass" />
+            style="@style/FloatingMenuItem"
+            android:layout_margin="6dp">
+            <ImageView android:id="@+id/imgWifiIcon" style="@style/FloatingMenuIcon" android:src="@android:drawable/ic_menu_compass" />
             <TextView style="@style/FloatingMenuText" android:text="Wi-Fi" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/btnBluetooth"
-            style="@style/FloatingMenuItem">
-            <ImageView id="@+id/imgBluetoothIcon" style="@style/FloatingMenuIcon" android:src="@android:drawable/ic_menu_share" />
+            style="@style/FloatingMenuItem"
+            android:layout_margin="6dp">
+            <ImageView android:id="@+id/imgBluetoothIcon" style="@style/FloatingMenuIcon" android:src="@android:drawable/ic_menu_share" />
             <TextView style="@style/FloatingMenuText" android:text="Bluetooth" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/btnAutoRotate"
-            style="@style/FloatingMenuItem">
-            <ImageView id="@+id/imgRotateIcon" style="@style/FloatingMenuIcon" android:src="@android:drawable/ic_menu_always_landscape_portrait" />
-            <TextView id="@+id/txtRotationLabel" style="@style/FloatingMenuText" android:text="Rotate" />
+            style="@style/FloatingMenuItem"
+            android:layout_margin="6dp">
+            <ImageView android:id="@+id/imgRotateIcon" style="@style/FloatingMenuIcon" android:src="@android:drawable/ic_menu_always_landscape_portrait" />
+            <TextView android:id="@+id/txtRotationLabel" style="@style/FloatingMenuText" android:text="Rotate" />
         </LinearLayout>
     </LinearLayout>
 
@@ -46,21 +49,24 @@
 
         <LinearLayout
             android:id="@+id/btnLocation"
-            style="@style/FloatingMenuItem">
-            <ImageView id="@+id/imgLocationIcon" style="@style/FloatingMenuIcon" android:src="@android:drawable/ic_menu_mylocation" />
+            style="@style/FloatingMenuItem"
+            android:layout_margin="6dp">
+            <ImageView android:id="@+id/imgLocationIcon" style="@style/FloatingMenuIcon" android:src="@android:drawable/ic_menu_mylocation" />
             <TextView style="@style/FloatingMenuText" android:text="Location" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/btnBackToMain"
-            style="@style/FloatingMenuItem">
+            style="@style/FloatingMenuItem"
+            android:layout_margin="6dp">
             <ImageView style="@style/FloatingMenuIcon" android:src="@android:drawable/ic_menu_revert" />
             <TextView style="@style/FloatingMenuText" android:text="Back" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/btnVolumeUp"
-            style="@style/FloatingMenuItem">
+            style="@style/FloatingMenuItem"
+            android:layout_margin="6dp">
             <ImageView style="@style/FloatingMenuIcon" android:src="@android:drawable/ic_lock_silent_mode_off" />
             <TextView style="@style/FloatingMenuText" android:text="Vol +" />
         </LinearLayout>
@@ -75,21 +81,24 @@
 
         <LinearLayout
             android:id="@+id/btnNormal"
-            style="@style/FloatingMenuItem">
+            style="@style/FloatingMenuItem"
+            android:layout_margin="6dp">
             <ImageView style="@style/FloatingMenuIcon" android:src="@android:drawable/ic_lock_silent_mode" />
-            <TextView id="@+id/txtRingerLabel" style="@style/FloatingMenuText" android:text="Ringer" />
+            <TextView android:id="@+id/txtRingerLabel" style="@style/FloatingMenuText" android:text="Ringer" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/btnFlashlight"
-            style="@style/FloatingMenuItem">
-            <ImageView id="@+id/imgTorchIcon" style="@style/FloatingMenuIcon" android:src="@android:drawable/ic_menu_day" />
+            style="@style/FloatingMenuItem"
+            android:layout_margin="6dp">
+            <ImageView android:id="@+id/imgTorchIcon" style="@style/FloatingMenuIcon" android:src="@android:drawable/ic_menu_day" />
             <TextView style="@style/FloatingMenuText" android:text="Torch" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/btnVolumeDown"
-            style="@style/FloatingMenuItem">
+            style="@style/FloatingMenuItem"
+            android:layout_margin="6dp">
             <ImageView style="@style/FloatingMenuIcon" android:src="@android:drawable/ic_lock_silent_mode" />
             <TextView style="@style/FloatingMenuText" android:text="Vol -" />
         </LinearLayout>

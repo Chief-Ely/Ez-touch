@@ -1,5 +1,6 @@
 package com.assistivetouch.custom
 
+import android.app.ActivityManager
 import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
@@ -13,12 +14,14 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
-import android.widget.Button
+import android.widget.FrameLayout
 import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SwitchCompat
 import java.io.File
 import java.io.FileOutputStream
 import java.io.InputStream
@@ -26,6 +29,8 @@ import java.io.InputStream
 class MainActivity : AppCompatActivity() {
 
     private lateinit var imgPreview: ImageView
+    private lateinit var switchServiceToggle: SwitchCompat
+    private lateinit var txtStatus: TextView
 
     private val pickMedia = registerForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri ->
         if (uri != null) {
@@ -38,28 +43,55 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         imgPreview = findViewById(R.id.imgPreview)
-        val btnPickImage: Button = findViewById(R.id.btnPickImage)
-        val btnStartService: Button = findViewById(R.id.btnStartService)
-        val btnStopService: Button = findViewById(R.id.btnStopService)
+        switchServiceToggle = findViewById(R.id.switchServiceToggle)
+        txtStatus = findViewById(R.id.txtStatus)
+        val cardImagePicker: FrameLayout = findViewById(R.id.cardImagePicker)
 
         loadSavedPreview()
-        checkAndRequestAllPermissions()
+        updateSwitchStateUI()
 
-        btnPickImage.setOnClickListener {
+        cardImagePicker.setOnClickListener {
             pickMedia.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
         }
 
-        btnStartService.setOnClickListener {
-            if (checkAndRequestAllPermissions()) {
-                startService(Intent(this, FloatingService::class.java))
-                Toast.makeText(this, "Ez-touch active", Toast.LENGTH_SHORT).show()
+        switchServiceToggle.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                if (checkAndRequestAllPermissions()) {
+                    startService(Intent(this, FloatingService::class.java))
+                    txtStatus.text = "Enabled"
+                    Toast.makeText(this, "Ez-touch active", Toast.LENGTH_SHORT).show()
+                } else {
+                    switchServiceToggle.isChecked = false
+                    txtStatus.text = "Disabled"
+                }
+            } else {
+                stopService(Intent(this, FloatingService::class.java))
+                txtStatus.text = "Disabled"
+                Toast.makeText(this, "Ez-touch overlay disabled", Toast.LENGTH_SHORT).show()
             }
         }
+    }
 
-        btnStopService.setOnClickListener {
-            stopService(Intent(this, FloatingService::class.java))
-            Toast.makeText(this, "Ez-touch overlay disabled", Toast.LENGTH_SHORT).show()
+    override fun onResume() {
+        super.onResume()
+        updateSwitchStateUI()
+    }
+
+    private fun updateSwitchStateUI() {
+        val isRunning = isServiceRunning(FloatingService::class.java)
+        switchServiceToggle.isChecked = isRunning
+        txtStatus.text = if (isRunning) "Enabled" else "Disabled"
+    }
+
+    @Suppress("DEPRECATION")
+    private fun isServiceRunning(serviceClass: Class<*>): Boolean {
+        val manager = getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
+        for (service in manager.getRunningServices(Int.MAX_VALUE)) {
+            if (serviceClass.name == service.service.className) {
+                return true
+            }
         }
+        return false
     }
 
     private fun checkAndRequestAllPermissions(): Boolean {

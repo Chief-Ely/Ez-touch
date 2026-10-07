@@ -303,8 +303,19 @@ class FloatingService : Service() {
         } catch (e: Exception) { e.printStackTrace() }
 
         updateRotationUI(view)
-        highlightIcon(view.findViewById(R.id.imgTorchIcon), isFlashlightOn)
+        updateTorchUI(view)
         updateRingerUI(view)
+    }
+
+    private fun updateTorchUI(view: View) {
+        val torchIcon = view.findViewById<ImageView>(R.id.imgTorchIcon)
+        if (isFlashlightOn) {
+            torchIcon?.setImageResource(android.R.drawable.ic_menu_day)
+            highlightIcon(torchIcon, true)
+        } else {
+            torchIcon?.setImageResource(android.R.drawable.ic_menu_compass)
+            highlightIcon(torchIcon, false)
+        }
     }
 
     private fun highlightIcon(imageView: ImageView?, active: Boolean) {
@@ -363,10 +374,18 @@ class FloatingService : Service() {
     private fun updateRotationUI(view: View) {
         val currentRotation = Settings.System.getInt(contentResolver, Settings.System.ACCELEROMETER_ROTATION, 0)
         val isRotateOn = currentRotation == 1
-        val label = if (isRotateOn) "Rotate" else "Locked"
+        val rotateIcon = view.findViewById<ImageView>(R.id.imgRotateIcon)
+        val rotateLabel = view.findViewById<TextView>(R.id.txtRotationLabel)
 
-        view.findViewById<TextView>(R.id.txtRotationLabel)?.text = label
-        highlightIcon(view.findViewById(R.id.imgRotateIcon), isRotateOn)
+        if (isRotateOn) {
+            rotateLabel?.text = "Rotate"
+            rotateIcon?.setImageResource(android.R.drawable.ic_menu_always_landscape_portrait)
+            highlightIcon(rotateIcon, true)
+        } else {
+            rotateLabel?.text = "Portrait"
+            rotateIcon?.setImageResource(android.R.drawable.ic_menu_sort_by_size)
+            highlightIcon(rotateIcon, false)
+        }
     }
 
     private fun setupOutsideTouchListener(view: View) {
@@ -386,7 +405,7 @@ class FloatingService : Service() {
             val cameraId = cameraManager.cameraIdList[0]
             isFlashlightOn = !isFlashlightOn
             cameraManager.setTorchMode(cameraId, isFlashlightOn)
-            highlightIcon(view.findViewById(R.id.imgTorchIcon), isFlashlightOn)
+            updateTorchUI(view)
         } catch (e: Exception) {
             Toast.makeText(this, "Flashlight unavailable", Toast.LENGTH_SHORT).show()
         }

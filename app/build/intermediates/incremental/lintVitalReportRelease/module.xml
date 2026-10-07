@@ -1,0 +1,18 @@
+<lint-module
+    format="1"
+    dir="/workspaces/Ez-touch/app"
+    name=":app"
+    type="APP"
+    maven="Ez-touch:app:"
+    agpVersion="8.1.2"
+    buildFolder="build"
+    bootClassPath="/workspaces/android-sdk/platforms/android-34/android.jar:/workspaces/android-sdk/build-tools/33.0.1/core-lambda-stubs.jar"
+    javaSourceLevel="17"
+    compileTarget="android-34">
+  <lintOptions
+      abortOnError="true"
+      absolutePaths="true"
+      checkReleaseBuilds="true"
+      explainIssues="true"/>
+  <variant name="release"/>
+</lint-module>
