@@ -182,6 +182,7 @@ class FloatingService : Service() {
         activeMenuContainer = menuView
 
         val imgCenterLogo = menuView.findViewById<ImageView>(R.id.imgCenterLogo)
+        imgCenterLogo?.colorFilter = null
         if (imgCenterLogo != null) {
             loadCustomImageIntoView(imgCenterLogo)
         }

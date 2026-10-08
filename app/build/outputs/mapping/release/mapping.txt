@@ -3,8 +3,8 @@
 # min_api: 24
 # common_typos_disable
 # {"id":"com.android.tools.r8.mapping","version":"2.2"}
-# pg_map_id: a4ef4e4
-# pg_map_hash: SHA-256 a4ef4e4f35770a8a42c67217a750b99d11fae640ab3176f03b54330c94720770
+# pg_map_id: 40fb707
+# pg_map_hash: SHA-256 40fb707ec0577b4ebf29aed3722b858e23def2451aa9ebddba98f9d32a2741bb
 android.app.AppComponentFactory -> android.app.AppComponentFactory:
 # {"id":"com.android.tools.r8.synthesized"}
 android.app.job.JobServiceEngine -> android.app.job.JobServiceEngine:
@@ -37270,37 +37270,29 @@ com.assistivetouch.custom.AssistiveAccessibilityService$Companion -> com.assisti
     1:1:void <init>(kotlin.jvm.internal.DefaultConstructorMarker):0:0 -> <init>
       # {"id":"com.android.tools.r8.residualsignature","signature":"(Li2/d;)V"}
 com.assistivetouch.custom.FloatingService -> com.assistivetouch.custom.FloatingService:
-    1:1:void $r8$lambda$8lUmPoT2qHVJOUBQVQB0Y1YMqWE(com.assistivetouch.custom.FloatingService,android.view.View):0:0 -> a
+    1:1:void $r8$lambda$AaMlFeKX7N8Jl6EauQpH8Uq1kS8(com.assistivetouch.custom.FloatingService,android.view.View):0:0 -> a
       # {"id":"com.android.tools.r8.synthesized"}
-    1:1:void $r8$lambda$D5krsLy1bPkPk5Vck4KpPHegvkY():0:0 -> b
+    1:1:boolean $r8$lambda$CMBaTu93ZBHgC3ynCOTPAWBE9Mc(com.assistivetouch.custom.FloatingService,android.view.View,android.view.MotionEvent):0:0 -> b
       # {"id":"com.android.tools.r8.synthesized"}
-    1:1:void $r8$lambda$DQ-2jNmcjN11MIF5ozK1o7dBUvc(com.assistivetouch.custom.FloatingService,android.view.View):0:0 -> c
+    1:1:void $r8$lambda$CVu_YcG_PqUUfhkHJ4ujAb7VGFE(com.assistivetouch.custom.FloatingService,android.view.View):0:0 -> c
       # {"id":"com.android.tools.r8.synthesized"}
-    1:1:void $r8$lambda$NPzgD3_4zZ9k3Ucza1J6mpJgeQs(com.assistivetouch.custom.FloatingService,android.view.View,android.view.View):0:0 -> d
+    1:1:void $r8$lambda$D5krsLy1bPkPk5Vck4KpPHegvkY():0:0 -> d
       # {"id":"com.android.tools.r8.synthesized"}
-    1:1:void $r8$lambda$O-RnhEXk97ExsUvV48ChBMuYo9I(com.assistivetouch.custom.FloatingService,android.view.View):0:0 -> e
+    1:1:void $r8$lambda$OaclS5CMJ6RGdE-m0jTZurczw4s(com.assistivetouch.custom.FloatingService,android.view.View):0:0 -> e
       # {"id":"com.android.tools.r8.synthesized"}
-    1:1:void $r8$lambda$OaclS5CMJ6RGdE-m0jTZurczw4s(com.assistivetouch.custom.FloatingService,android.view.View):0:0 -> f
+    1:1:void $r8$lambda$RX2Gno6X05HcaYFHAQFO-qP5SAw(com.assistivetouch.custom.FloatingService,android.view.View):0:0 -> f
       # {"id":"com.android.tools.r8.synthesized"}
-    1:1:void $r8$lambda$RX2Gno6X05HcaYFHAQFO-qP5SAw(com.assistivetouch.custom.FloatingService,android.view.View):0:0 -> g
+    1:1:void $r8$lambda$RwmQZDH0MxiLHFJT32zft8-we0M(com.assistivetouch.custom.FloatingService,android.view.View):0:0 -> g
       # {"id":"com.android.tools.r8.synthesized"}
-    1:1:void $r8$lambda$RwmQZDH0MxiLHFJT32zft8-we0M(com.assistivetouch.custom.FloatingService,android.view.View):0:0 -> h
+    1:1:void $r8$lambda$VYAljRBCzoFfhUPstE294OUKeM0(com.assistivetouch.custom.FloatingService,android.view.View,android.view.View):0:0 -> h
       # {"id":"com.android.tools.r8.synthesized"}
-    1:1:void $r8$lambda$bBswkBMOWeo4YqnhfaD3bryb-v8(com.assistivetouch.custom.FloatingService,android.view.View):0:0 -> i
+    1:1:void $r8$lambda$YEdB0eSFK-s8l8c8KhJhNiRh790(com.assistivetouch.custom.FloatingService,android.view.View):0:0 -> i
       # {"id":"com.android.tools.r8.synthesized"}
-    1:1:void $r8$lambda$eO_SQ8R_NGkviSrViSef8vdrBqw(com.assistivetouch.custom.FloatingService,android.view.View):0:0 -> j
+    1:1:void $r8$lambda$fS92xMAoh9UyesLanVcZFqQn7Qc(com.assistivetouch.custom.FloatingService,android.view.View,android.view.View):0:0 -> j
       # {"id":"com.android.tools.r8.synthesized"}
-    1:1:void $r8$lambda$fDuil7p0QTxnRBJT7Ta-h7l-KHo(com.assistivetouch.custom.FloatingService,android.view.View,android.view.View):0:0 -> k
+    1:1:void $r8$lambda$gVA5I_wyb6f8gIgqdIc57H4ox28(com.assistivetouch.custom.FloatingService,android.view.View):0:0 -> k
       # {"id":"com.android.tools.r8.synthesized"}
-    1:1:void $r8$lambda$gVA5I_wyb6f8gIgqdIc57H4ox28(com.assistivetouch.custom.FloatingService,android.view.View):0:0 -> l
-      # {"id":"com.android.tools.r8.synthesized"}
-    1:1:void $r8$lambda$lLKPgDRYcCMoZhawGXSwCBOpULw(com.assistivetouch.custom.FloatingService,android.view.View,android.view.View):0:0 -> m
-      # {"id":"com.android.tools.r8.synthesized"}
-    1:1:boolean $r8$lambda$pGEPXQOM0HeK5qCtYFHdJkhO4Xs(com.assistivetouch.custom.FloatingService,android.view.View,android.view.MotionEvent):0:0 -> n
-      # {"id":"com.android.tools.r8.synthesized"}
-    1:1:void $r8$lambda$t46DkvhZp6e-jM-4N_9Dh9tSdCM(com.assistivetouch.custom.FloatingService,android.view.View):0:0 -> o
-      # {"id":"com.android.tools.r8.synthesized"}
-    1:1:void $r8$lambda$zHyghejI6pwrga1PaPmKmQJ2j4c(com.assistivetouch.custom.FloatingService,android.view.View):0:0 -> p
+    1:1:void $r8$lambda$zHyghejI6pwrga1PaPmKmQJ2j4c(com.assistivetouch.custom.FloatingService,android.view.View):0:0 -> l
       # {"id":"com.android.tools.r8.synthesized"}
     29:64:void androidx.core.app.NotificationCompat$Builder.<init>(android.content.Context,java.lang.String):0:0 -> startForegroundService
     29:64:void startForegroundService():0 -> startForegroundService
@@ -37392,13 +37384,13 @@ com.assistivetouch.custom.FloatingService$$ExternalSyntheticLambda3 -> com.assis
 com.assistivetouch.custom.FloatingService$$ExternalSyntheticLambda4 -> com.assistivetouch.custom.c:
 # {"id":"sourceFile","fileName":"R8$$SyntheticClass"}
 # {"id":"com.android.tools.r8.synthesized"}
-    int com.assistivetouch.custom.FloatingService$$InternalSyntheticLambda$1$7abe7272004d7ebefa958952191a80e0f2ff89c2aae7d8093c8b8220d32f61e2$2.$r8$classId -> a
-    com.assistivetouch.custom.FloatingService com.assistivetouch.custom.FloatingService$$InternalSyntheticLambda$1$7abe7272004d7ebefa958952191a80e0f2ff89c2aae7d8093c8b8220d32f61e2$2.f$0 -> b
-    android.view.View com.assistivetouch.custom.FloatingService$$InternalSyntheticLambda$1$7abe7272004d7ebefa958952191a80e0f2ff89c2aae7d8093c8b8220d32f61e2$2.f$1 -> c
-    1:10:void com.assistivetouch.custom.FloatingService$$InternalSyntheticLambda$1$7abe7272004d7ebefa958952191a80e0f2ff89c2aae7d8093c8b8220d32f61e2$2.<init>(com.assistivetouch.custom.FloatingService,android.view.View):0:0 -> <init>
-    1:10:void com.assistivetouch.custom.FloatingService$$InternalSyntheticLambda$1$7abe7272004d7ebefa958952191a80e0f2ff89c2aae7d8093c8b8220d32f61e2$2.$r8$init$synthetic(com.assistivetouch.custom.FloatingService,android.view.View,int):0 -> <init>
+    int com.assistivetouch.custom.FloatingService$$InternalSyntheticLambda$1$7abe7272004d7ebefa958952191a80e0f2ff89c2aae7d8093c8b8220d32f61e2$0.$r8$classId -> a
+    com.assistivetouch.custom.FloatingService com.assistivetouch.custom.FloatingService$$InternalSyntheticLambda$1$7abe7272004d7ebefa958952191a80e0f2ff89c2aae7d8093c8b8220d32f61e2$0.f$0 -> b
+    android.view.View com.assistivetouch.custom.FloatingService$$InternalSyntheticLambda$1$7abe7272004d7ebefa958952191a80e0f2ff89c2aae7d8093c8b8220d32f61e2$0.f$1 -> c
+    1:10:void com.assistivetouch.custom.FloatingService$$InternalSyntheticLambda$1$7abe7272004d7ebefa958952191a80e0f2ff89c2aae7d8093c8b8220d32f61e2$0.<init>(com.assistivetouch.custom.FloatingService,android.view.View):0:0 -> <init>
+    1:10:void com.assistivetouch.custom.FloatingService$$InternalSyntheticLambda$1$7abe7272004d7ebefa958952191a80e0f2ff89c2aae7d8093c8b8220d32f61e2$0.$r8$init$synthetic(com.assistivetouch.custom.FloatingService,android.view.View,int):0 -> <init>
       # {"id":"com.android.tools.r8.synthesized"}
-    1:1:void com.assistivetouch.custom.FloatingService$$InternalSyntheticLambda$1$7abe7272004d7ebefa958952191a80e0f2ff89c2aae7d8093c8b8220d32f61e2$2.onClick$bridge(android.view.View):0:0 -> onClick
+    1:1:void com.assistivetouch.custom.FloatingService$$InternalSyntheticLambda$1$7abe7272004d7ebefa958952191a80e0f2ff89c2aae7d8093c8b8220d32f61e2$0.onClick$bridge(android.view.View):0:0 -> onClick
       # {"id":"com.android.tools.r8.synthesized"}
 com.assistivetouch.custom.FloatingService$$ExternalSyntheticLambda5 -> com.assistivetouch.custom.d:
 # {"id":"sourceFile","fileName":"R8$$SyntheticClass"}

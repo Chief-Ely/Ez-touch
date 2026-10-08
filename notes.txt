@@ -3,3 +3,10 @@ tree -I '.git|.gradle|.idea|build|.cxx|captures|.externalNativeBuild|gradlew|gra
 
 Use python to generate a file for the structure:
 python3 export_structure.py
+
+Make svg to xml in svg_icons
+python3 svg_to_xml.py
+
+release and debug cmd:
+./gradlew assembleRelease
+./gradlew assembleDebug
