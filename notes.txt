@@ -1,0 +1,5 @@
+Show file structure excluding not related shits:
+tree -I '.git|.gradle|.idea|build|.cxx|captures|.externalNativeBuild|gradlew|gradlew.bat|local.properties|structure.txt' > structure.txt && cat structure.txt
+
+Use python to generate a file for the structure:
+python3 export_structure.py

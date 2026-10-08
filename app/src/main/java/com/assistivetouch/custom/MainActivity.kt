@@ -56,7 +56,7 @@ class MainActivity : AppCompatActivity() {
 
         switchServiceToggle.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
-                if (checkAndRequestAllPermissions()) {
+                if (checkAndRequestOverlayPermission()) {
                     startService(Intent(this, FloatingService::class.java))
                     txtStatus.text = "Enabled"
                     Toast.makeText(this, "Ez-touch active", Toast.LENGTH_SHORT).show()
@@ -94,25 +94,12 @@ class MainActivity : AppCompatActivity() {
         return false
     }
 
-    private fun checkAndRequestAllPermissions(): Boolean {
+    private fun checkAndRequestOverlayPermission(): Boolean {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !Settings.canDrawOverlays(this)) {
             startActivity(Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, Uri.parse("package:$packageName")))
             Toast.makeText(this, "Grant Display Over Other Apps permission", Toast.LENGTH_SHORT).show()
             return false
         }
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !Settings.System.canWrite(this)) {
-            startActivity(Intent(Settings.ACTION_MANAGE_WRITE_SETTINGS, Uri.parse("package:$packageName")))
-            Toast.makeText(this, "Grant Write System Settings permission", Toast.LENGTH_SHORT).show()
-            return false
-        }
-
-        if (AssistiveAccessibilityService.instance == null) {
-            openAccessibilitySettings(this)
-            Toast.makeText(this, "Enable Ez-touch in Accessibility Settings", Toast.LENGTH_SHORT).show()
-            return false
-        }
-
         return true
     }
 
@@ -147,19 +134,16 @@ class MainActivity : AppCompatActivity() {
                 val finalSquareBitmap = Bitmap.createScaledBitmap(scaledBitmap, targetSize, targetSize, true)
                 val circularBitmap = getCircularBitmap(finalSquareBitmap)
 
-                // Save circular version for the floating overlay ball
                 val circularFile = File(filesDir, "custom_ball.png")
                 FileOutputStream(circularFile).use { out ->
                     circularBitmap.compress(Bitmap.CompressFormat.PNG, 100, out)
                 }
 
-                // Save square version for the main app UI preview
                 val squareFile = File(filesDir, "preview_square.png")
                 FileOutputStream(squareFile).use { out ->
                     finalSquareBitmap.compress(Bitmap.CompressFormat.PNG, 100, out)
                 }
 
-                // Display original square image in main activity UI without starting service
                 imgPreview.setImageBitmap(finalSquareBitmap)
                 Toast.makeText(this, "Floating photo saved!", Toast.LENGTH_SHORT).show()
             }

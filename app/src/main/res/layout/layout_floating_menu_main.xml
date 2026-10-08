@@ -1,76 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/menuMainRoot"
-    android:layout_width="300dp"
-    android:layout_height="300dp"
+    android:layout_width="280dp"
+    android:layout_height="280dp"
     android:background="@drawable/bg_floating_menu"
-    android:orientation="vertical"
-    android:padding="20dp"
-    android:weightSum="3">
+    android:padding="16dp">
 
-    <!-- Top Row: Settings & Screen Lock -->
+    <!-- Center: Ez-Touch -->
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="horizontal">
-
-        <LinearLayout
-            android:id="@+id/btnMenuSetting"
-            style="@style/FloatingMenuItem"
-            android:layout_margin="6dp">
-            <ImageView style="@style/FloatingMenuIcon" android:src="@android:drawable/ic_menu_preferences" />
-            <TextView style="@style/FloatingMenuText" android:text="Settings" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/btnMenuLock"
-            style="@style/FloatingMenuItem"
-            android:layout_margin="6dp">
-            <ImageView style="@style/FloatingMenuIcon" android:src="@android:drawable/ic_lock_power_off" />
-            <TextView style="@style/FloatingMenuText" android:text="Lock" />
-        </LinearLayout>
+        android:id="@+id/btnMenuMain"
+        style="@style/FloatingMenuItem"
+        android:layout_centerInParent="true">
+        <ImageView
+            android:id="@+id/imgCenterLogo"
+            style="@style/FloatingMenuIcon"
+            android:src="@drawable/ic_app_logo" />
+        <TextView
+            style="@style/FloatingMenuText"
+            android:text="Ez-Touch" />
     </LinearLayout>
 
-    <!-- Middle Row: Screenshot & Home -->
+    <!-- Top: Lock -->
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="horizontal">
-
-        <LinearLayout
-            android:id="@+id/btnMenuScreenshot"
-            style="@style/FloatingMenuItem"
-            android:layout_margin="6dp">
-            <ImageView style="@style/FloatingMenuIcon" android:src="@android:drawable/ic_menu_camera" />
-            <TextView style="@style/FloatingMenuText" android:text="Screenshot" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/btnMenuHome"
-            style="@style/FloatingMenuItem"
-            android:layout_margin="6dp">
-            <ImageView style="@style/FloatingMenuIcon" android:src="@android:drawable/ic_menu_view" />
-            <TextView style="@style/FloatingMenuText" android:text="Home" />
-        </LinearLayout>
+        android:id="@+id/btnMenuLock"
+        style="@style/FloatingMenuItem"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="12dp">
+        <ImageView
+            style="@style/FloatingMenuIcon"
+            android:src="@drawable/lock" />
+        <TextView
+            style="@style/FloatingMenuText"
+            android:text="Lock" />
     </LinearLayout>
 
-    <!-- Bottom Row: Return to Ez-touch App -->
+    <!-- Right: Settings -->
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:orientation="horizontal">
-
-        <LinearLayout
-            android:id="@+id/btnMenuMain"
-            style="@style/FloatingMenuItem"
-            android:layout_margin="6dp">
-            <ImageView style="@style/FloatingMenuIcon" android:src="@android:drawable/ic_menu_compass" />
-            <TextView style="@style/FloatingMenuText" android:text="Ez-touch" />
-        </LinearLayout>
+        android:id="@+id/btnMenuSetting"
+        style="@style/FloatingMenuItem"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="12dp">
+        <ImageView
+            style="@style/FloatingMenuIcon"
+            android:src="@drawable/settings" />
+        <TextView
+            style="@style/FloatingMenuText"
+            android:text="Settings" />
     </LinearLayout>
 
-</LinearLayout>
+    <!-- Bottom: Home -->
+    <LinearLayout
+        android:id="@+id/btnMenuHome"
+        style="@style/FloatingMenuItem"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="12dp">
+        <ImageView
+            style="@style/FloatingMenuIcon"
+            android:src="@drawable/home" />
+        <TextView
+            style="@style/FloatingMenuText"
+            android:text="Home" />
+    </LinearLayout>
+
+    <!-- Left: Screenshot -->
+    <LinearLayout
+        android:id="@+id/btnMenuScreenshot"
+        style="@style/FloatingMenuItem"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="12dp">
+        <ImageView
+            style="@style/FloatingMenuIcon"
+            android:src="@drawable/screenshot" />
+        <TextView
+            style="@style/FloatingMenuText"
+            android:text="Screenshot" />
+    </LinearLayout>
+
+</RelativeLayout>

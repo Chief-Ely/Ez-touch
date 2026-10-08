@@ -4,7 +4,6 @@ import android.app.Notification
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.Service
-import android.bluetooth.BluetoothAdapter
 import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
@@ -17,9 +16,8 @@ import android.graphics.PorterDuff
 import android.graphics.PorterDuffXfermode
 import android.graphics.Rect
 import android.hardware.camera2.CameraManager
-import android.location.LocationManager
 import android.media.AudioManager
-import android.net.wifi.WifiManager
+import android.net.Uri
 import android.os.Build
 import android.os.Handler
 import android.os.IBinder
@@ -79,7 +77,7 @@ class FloatingService : Service() {
         floatingBallView = ImageView(this).apply {
             scaleType = ImageView.ScaleType.FIT_CENTER
         }
-        loadCustomImage()
+        loadCustomImageIntoView(floatingBallView)
 
         val layoutType = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY
@@ -143,13 +141,13 @@ class FloatingService : Service() {
         windowManager.addView(floatingBallView, ballLayoutParams)
     }
 
-    private fun loadCustomImage() {
+    private fun loadCustomImageIntoView(imageView: ImageView) {
         val file = File(filesDir, "custom_ball.png")
         if (file.exists()) {
             val bitmap = BitmapFactory.decodeFile(file.absolutePath)
-            floatingBallView.setImageBitmap(bitmap)
+            imageView.setImageBitmap(bitmap)
         } else {
-            floatingBallView.setImageBitmap(getDownscaledCircularDefaultLogo())
+            imageView.setImageBitmap(getDownscaledCircularDefaultLogo())
         }
     }
 
@@ -183,6 +181,11 @@ class FloatingService : Service() {
         windowManager.addView(menuView, menuParams)
         activeMenuContainer = menuView
 
+        val imgCenterLogo = menuView.findViewById<ImageView>(R.id.imgCenterLogo)
+        if (imgCenterLogo != null) {
+            loadCustomImageIntoView(imgCenterLogo)
+        }
+
         menuView.apply {
             findViewById<View>(R.id.btnMenuSetting)?.setOnClickListener {
                 showSettingsMenu()
@@ -192,7 +195,8 @@ class FloatingService : Service() {
                 if (AssistiveAccessibilityService.instance != null) {
                     AssistiveAccessibilityService.instance?.performLock()
                 } else {
-                    MainActivity.openAccessibilitySettings(applicationContext)
+                    Toast.makeText(applicationContext, "Please enable Ez-touch in Accessibility Settings", Toast.LENGTH_LONG).show()
+                    openAccessibilitySettings()
                 }
             }
             findViewById<View>(R.id.btnMenuScreenshot)?.setOnClickListener {
@@ -202,7 +206,8 @@ class FloatingService : Service() {
                         AssistiveAccessibilityService.instance?.performScreenshot()
                     }, 300)
                 } else {
-                    MainActivity.openAccessibilitySettings(applicationContext)
+                    Toast.makeText(applicationContext, "Please enable Ez-touch in Accessibility Settings", Toast.LENGTH_LONG).show()
+                    openAccessibilitySettings()
                 }
             }
             findViewById<View>(R.id.btnMenuHome)?.setOnClickListener {
@@ -223,6 +228,13 @@ class FloatingService : Service() {
         }
     }
 
+    private fun openAccessibilitySettings() {
+        val intent = Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS).apply {
+            flags = Intent.FLAG_ACTIVITY_NEW_TASK
+        }
+        startActivity(intent)
+    }
+
     private fun showSettingsMenu() {
         closeActiveMenu()
         val inflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
@@ -234,23 +246,12 @@ class FloatingService : Service() {
         windowManager.addView(menuView, menuParams)
         activeMenuContainer = menuView
 
+        // Read and sync current device states for Flashlight and Auto-Rotate on load
         updateAllSettingsUI(menuView)
 
         menuView.apply {
-            findViewById<View>(R.id.btnWifi)?.setOnClickListener {
-                launchControlPanel(Settings.Panel.ACTION_WIFI)
-                closeActiveMenu()
-            }
-            findViewById<View>(R.id.btnBluetooth)?.setOnClickListener {
-                startActivity(Intent(Settings.ACTION_BLUETOOTH_SETTINGS).apply { flags = Intent.FLAG_ACTIVITY_NEW_TASK })
-                closeActiveMenu()
-            }
             findViewById<View>(R.id.btnAutoRotate)?.setOnClickListener {
                 toggleAutoRotate(menuView)
-            }
-            findViewById<View>(R.id.btnLocation)?.setOnClickListener {
-                startActivity(Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS).apply { flags = Intent.FLAG_ACTIVITY_NEW_TASK })
-                closeActiveMenu()
             }
             findViewById<View>(R.id.btnVolumeUp)?.setOnClickListener {
                 val audioManager = getSystemService(AUDIO_SERVICE) as AudioManager
@@ -259,9 +260,6 @@ class FloatingService : Service() {
             findViewById<View>(R.id.btnVolumeDown)?.setOnClickListener {
                 val audioManager = getSystemService(AUDIO_SERVICE) as AudioManager
                 audioManager.adjustStreamVolume(AudioManager.STREAM_MUSIC, AudioManager.ADJUST_LOWER, AudioManager.FLAG_SHOW_UI)
-            }
-            findViewById<View>(R.id.btnNormal)?.setOnClickListener {
-                cycleRingerMode(menuView)
             }
             findViewById<View>(R.id.btnFlashlight)?.setOnClickListener {
                 toggleFlashlight(menuView)
@@ -272,92 +270,36 @@ class FloatingService : Service() {
         }
     }
 
-    private fun launchControlPanel(action: String) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-            val intent = Intent(action).apply {
-                flags = Intent.FLAG_ACTIVITY_NEW_TASK
-            }
-            startActivity(intent)
-        } else {
-            startActivity(Intent(Settings.ACTION_WIFI_SETTINGS).apply { flags = Intent.FLAG_ACTIVITY_NEW_TASK })
-        }
-    }
-
     private fun updateAllSettingsUI(view: View) {
-        try {
-            val wifiManager = applicationContext.getSystemService(Context.WIFI_SERVICE) as WifiManager
-            val isWifiOn = wifiManager.isWifiEnabled
-            highlightIcon(view.findViewById(R.id.imgWifiIcon), isWifiOn)
-        } catch (e: Exception) { e.printStackTrace() }
-
-        try {
-            val bluetoothAdapter = BluetoothAdapter.getDefaultAdapter()
-            val isBtOn = bluetoothAdapter?.isEnabled == true
-            highlightIcon(view.findViewById(R.id.imgBluetoothIcon), isBtOn)
-        } catch (e: Exception) { e.printStackTrace() }
-
-        try {
-            val locationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
-            val isGpsOn = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)
-            highlightIcon(view.findViewById(R.id.imgLocationIcon), isGpsOn)
-        } catch (e: Exception) { e.printStackTrace() }
-
         updateRotationUI(view)
         updateTorchUI(view)
-        updateRingerUI(view)
     }
 
     private fun updateTorchUI(view: View) {
         val torchIcon = view.findViewById<ImageView>(R.id.imgTorchIcon)
         if (isFlashlightOn) {
-            torchIcon?.setImageResource(android.R.drawable.ic_menu_day)
-            highlightIcon(torchIcon, true)
+            torchIcon?.setImageResource(R.drawable.light_on)
         } else {
-            torchIcon?.setImageResource(android.R.drawable.ic_menu_compass)
-            highlightIcon(torchIcon, false)
+            torchIcon?.setImageResource(R.drawable.light_off)
         }
     }
 
-    private fun highlightIcon(imageView: ImageView?, active: Boolean) {
-        if (active) {
-            imageView?.setColorFilter(Color.WHITE)
-            imageView?.alpha = 1.0f
-        } else {
-            imageView?.setColorFilter(Color.GRAY)
-            imageView?.alpha = 0.5f
+    private fun toggleFlashlight(view: View) {
+        try {
+            val cameraManager = getSystemService(Context.CAMERA_SERVICE) as CameraManager
+            val cameraId = cameraManager.cameraIdList[0]
+            isFlashlightOn = !isFlashlightOn
+            cameraManager.setTorchMode(cameraId, isFlashlightOn)
+            updateTorchUI(view)
+        } catch (e: Exception) {
+            Toast.makeText(this, "Flashlight unavailable", Toast.LENGTH_SHORT).show()
         }
-    }
-
-    private fun cycleRingerMode(view: View) {
-        val audioManager = getSystemService(AUDIO_SERVICE) as AudioManager
-        when (audioManager.ringerMode) {
-            AudioManager.RINGER_MODE_NORMAL -> {
-                audioManager.ringerMode = AudioManager.RINGER_MODE_VIBRATE
-            }
-            AudioManager.RINGER_MODE_VIBRATE -> {
-                audioManager.ringerMode = AudioManager.RINGER_MODE_SILENT
-            }
-            else -> {
-                audioManager.ringerMode = AudioManager.RINGER_MODE_NORMAL
-            }
-        }
-        updateRingerUI(view)
-    }
-
-    private fun updateRingerUI(view: View) {
-        val audioManager = getSystemService(AUDIO_SERVICE) as AudioManager
-        val text = when (audioManager.ringerMode) {
-            AudioManager.RINGER_MODE_NORMAL -> "Normal"
-            AudioManager.RINGER_MODE_VIBRATE -> "Vibrate"
-            AudioManager.RINGER_MODE_SILENT -> "Silent"
-            else -> "Ringer"
-        }
-        view.findViewById<TextView>(R.id.txtRingerLabel)?.text = text
     }
 
     private fun toggleAutoRotate(view: View) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !Settings.System.canWrite(this)) {
-            startActivity(Intent(Settings.ACTION_MANAGE_WRITE_SETTINGS, android.net.Uri.parse("package:$packageName")).apply {
+            Toast.makeText(this, "Allow Modify System Settings to change Auto-Rotate", Toast.LENGTH_LONG).show()
+            startActivity(Intent(Settings.ACTION_MANAGE_WRITE_SETTINGS, Uri.parse("package:$packageName")).apply {
                 flags = Intent.FLAG_ACTIVITY_NEW_TASK
             })
             closeActiveMenu()
@@ -372,19 +314,17 @@ class FloatingService : Service() {
     }
 
     private fun updateRotationUI(view: View) {
-        val currentRotation = Settings.System.getInt(contentResolver, Settings.System.ACCELEROMETER_ROTATION, 0)
+        val currentRotation = try {
+            Settings.System.getInt(contentResolver, Settings.System.ACCELEROMETER_ROTATION, 0)
+        } catch (e: Exception) { 0 }
+        
         val isRotateOn = currentRotation == 1
         val rotateIcon = view.findViewById<ImageView>(R.id.imgRotateIcon)
-        val rotateLabel = view.findViewById<TextView>(R.id.txtRotationLabel)
 
         if (isRotateOn) {
-            rotateLabel?.text = "Rotate"
-            rotateIcon?.setImageResource(android.R.drawable.ic_menu_always_landscape_portrait)
-            highlightIcon(rotateIcon, true)
+            rotateIcon?.setImageResource(R.drawable.rotate)
         } else {
-            rotateLabel?.text = "Portrait"
-            rotateIcon?.setImageResource(android.R.drawable.ic_menu_sort_by_size)
-            highlightIcon(rotateIcon, false)
+            rotateIcon?.setImageResource(R.drawable.rotate_lock)
         }
     }
 
@@ -396,18 +336,6 @@ class FloatingService : Service() {
             } else {
                 false
             }
-        }
-    }
-
-    private fun toggleFlashlight(view: View) {
-        try {
-            val cameraManager = getSystemService(Context.CAMERA_SERVICE) as CameraManager
-            val cameraId = cameraManager.cameraIdList[0]
-            isFlashlightOn = !isFlashlightOn
-            cameraManager.setTorchMode(cameraId, isFlashlightOn)
-            updateTorchUI(view)
-        } catch (e: Exception) {
-            Toast.makeText(this, "Flashlight unavailable", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -426,9 +354,11 @@ class FloatingService : Service() {
             WindowManager.LayoutParams.TYPE_PHONE
         }
 
+        val menuSizePx = (280 * resources.displayMetrics.density).toInt()
+
         return WindowManager.LayoutParams(
-            WindowManager.LayoutParams.WRAP_CONTENT,
-            WindowManager.LayoutParams.WRAP_CONTENT,
+            menuSizePx,
+            menuSizePx,
             layoutType,
             WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL or WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH,
             PixelFormat.TRANSLUCENT
